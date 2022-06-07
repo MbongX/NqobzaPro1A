@@ -109,13 +109,13 @@ public class Tempo {
                 }
             }
         }
-        void task()
-        {
+
+        void task() {
 
 
             if (upperCount >= UsernamePassword_Uppecasel && lowerCount >= UsernamePassword_Lowercase && num_digits >= digitCount && Pasword_SpecialCharacterset >= 1)//the if statement operator will compare the upper case to the upper count, the lower case to lower count and digits to digit count iff the are greater or equls to\nthe assigned operator then
 
-            System.out.println("---------------------------------------------------");
+                System.out.println("---------------------------------------------------");
             System.out.println("Welcome to EasyKasnban");
             System.out.println("---------------------------------------------------");
             {
@@ -125,10 +125,10 @@ public class Tempo {
                 System.out.println("Please enter task number:");
                 TaskNum1 = Nq.nextInt();
                 System.out.println("---------------------------------------------------");
-                System.out.println("Task Number : "+ TaskName + ", Task name : " + TaskNum1 );
+                System.out.println("Task Number : " + TaskName + ", Task name : " + TaskNum1);
                 System.out.println("---------------------------------------------------");
 
-                Scanner UserOption= new Scanner(System.in);
+                Scanner UserOption = new Scanner(System.in);
 
               /*  for(int i=0;i>TaskNum1;i++)
                 {
@@ -151,45 +151,79 @@ public class Tempo {
             Selection = UserOption.nextInt();
             System.out.println("---------------------------------------------------");
             //Flow Control -> Menu
-                //Self-defined
+            //Self-defined
+/*
+            if (Selection >= 0) {
+                switch (Selection) {
+                    case 1:
+                        System.out.println();
+                        break;
 
-                    if(Selection >= 0) {
-                        switch (Selection) {
-                            case 1:
-                                System.out.println();
-                                break;
+                    case 2:
+                        System.out.println();
+                        break;
+                    case 3:
+                        System.out.println();
+                        break;
+                    default:
+                        System.out.println("Enter Selection Again");
 
-                            case 2:
-                                System.out.println();
-                                break;
-                            case 3:
-                                System.out.println();
-                                break;
-                            default:
-                                System.out.println("Enter Slection Again");
+                        System.out.println("---------------------------------------------------");
+                        System.out.println("Select your option: ");
 
-                                System.out.println("---------------------------------------------------");
-                                System.out.println("Select your option: ");
+                        System.out.println("(1) \t Add Task");
+                        System.out.println("(2) \t Coming Soon");
+                        System.out.println("(3) \t Quit \n");
+                        System.out.println("---------------------------------------------------");
+                        System.out.print("Your selected option is: ");
+                        Selection = UserOption.nextInt();
+                        System.out.println("---------------------------------------------------");
 
-                                System.out.println("(1) \t Add Task");
-                                System.out.println("(2) \t Coming Soon");
-                                System.out.println("(3) \t Quit \n");
-                                System.out.println("---------------------------------------------------");
-                                System.out.print("Your selected option is: ");
-                                Selection = UserOption.nextInt();
-                                System.out.println("---------------------------------------------------");
+                }
+            }*/
 
+            // Validating the user input
+            do {
+                if ((Selection > 0) && (Selection < 4)) {
+                    //Choice 1
+                    if (Selection == 1) {
+                        System.out.println("How many task do you want to add ?");//Instantiate the for loop
+
+
+                        System.out.println("Task Name : ");
+                        System.out.println("Task Number : ");//Task number start with a 0 and auto incriminate
+                        TaskNum = UserOption.nextInt();
+                        System.out.println("Task Description : ");//TaskDescrip <= 50 Chars
+                        User_TaskDescription = Nq.next();
+                        System.out.println("Developer Details : ");//The first and last name of the developer
+                        System.out.println("Task Duration : ");//estimated duration in hours
+                        System.out.println("Task ID : "); //Auto generated
+                        System.out.println("Task Status"); //user must choose the status of the task (1.To DO || 2.Done || 3.Doing)
+                        ToDo = Done;
+                        Done = Doing;
+                        if (ToDo == 1)
+                            System.out.println("---------------------------------------------------");
+                        System.out.println("ToDo.1:");
+                        ToDo = UserOption.nextInt();
+                        System.out.println("---------------------------------------------------");
+                        if (Doing == 2) {
+                            System.out.println("---------------------------------------------------");
+                            System.out.println("Doing.2:");
+                            Doing = UserOption.nextInt();
+                            System.out.println("---------------------------------------------------");
+                        }
+                        if (Done == 3) {
+                            System.out.println("---------------------------------------------------");
+                            System.out.println("Done.3:");
+                            Done = UserOption.nextInt();
+                            System.out.println("---------------------------------------------------");
                         }
                     }
+                } else if (Selection == 3) {
 
-
-
-
-
-
-
-
-
+                }
+            }
+            while (Selection != 3);
 
 
             while (Selection == 1) {
