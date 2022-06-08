@@ -1,6 +1,6 @@
 package nqobza;
 
-import java.util.Scanner; //Scanner lib
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
 
@@ -19,13 +19,11 @@ public class Main
         //constructor for the login menu pop immediately as the program runs
         public initMenu()
         {
-
             System.out.println("Are you an existing user or a new user (Please respond by selecting either \"1\" or \"2\"):");
             System.out.println("[1] --> Exisiting user");
             System.out.println("[2] --> New user");
             System.out.print("Your response: ");
             init = input.nextInt();
-
         }
 
         //Methods
