@@ -75,6 +75,8 @@ public class Main
         }
 
         public static void main(String[] args) {
+
+
             // write your code here
             initMenu obj = new initMenu(); //instantiate the class
             //ClassName Objectname(any name of your giving) = new Classname;

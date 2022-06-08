@@ -1,8 +1,5 @@
 package nqobza;
 
-import static java.lang.Math.random;
-import static java.lang.StrictMath.random;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,16 +8,16 @@ import java.util.Scanner;
  */
 
 
-
-    public class Login2 {
-    public Login2() //Constructor
-    {}
-    public class Base
+public class Login27 {
+    public Login27() //Constructor
     {
+    }
+
+    public class Base {
 
     }
-    public class Temp extends Base
-    {
+
+    public class Temp extends Base {
 
     }
 
