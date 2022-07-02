@@ -1,8 +1,9 @@
-package PROG5121_POE_Part2;
+package PROG5121_POE_Part2;//package PROG5121_POE_Part2;//package PROG5121_POE_Part2;
 
 import java.util.Scanner;
 
 public class St10166349_PROG5121_POE_Part2 {
+
     //fields
     int choice, choice2, taskNum, numOfTask = 0, duration = 0, autoTaskNumber = 0;
     String taskName, taskDescription, taskStatus, devFName, devLName, taskID;
@@ -11,8 +12,6 @@ public class St10166349_PROG5121_POE_Part2 {
 
     //Construct
     //get the number of tasks to be added upon initial execution of the program
-
-
     //methods
     int terminate() {
         return 0;
@@ -45,7 +44,6 @@ public class St10166349_PROG5121_POE_Part2 {
         choice2 = input.nextInt(); //2
         //int sum2 = 4*4;
     }
-
 
     void duration() {
 
@@ -153,9 +151,7 @@ public class St10166349_PROG5121_POE_Part2 {
                     taskDescription_len = noSpace_CTD.length();
                     //System.out.println("Total character in Task Description : " + taskDescription_len);
                     System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
-                }
-
-                while ((taskDescription_len > 50));
+                } while ((taskDescription_len > 50));
             } else if (taskDescription_len == 0) {
                 do {
                     System.out.println("Task Description cannot be empty, Try again");
@@ -170,9 +166,7 @@ public class St10166349_PROG5121_POE_Part2 {
                     taskDescription_len = noSpace_CTD.length();
                     //System.out.println("Total character in Task Description : " + taskDescription_len);
                     System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
-                }
-
-                while ((taskDescription_len == 0));
+                } while ((taskDescription_len == 0));
             }
         }
 
@@ -234,7 +228,7 @@ public class St10166349_PROG5121_POE_Part2 {
         }
         while (choice != 3);
     }
-*/
+     */
     void validate(int lCounter) {
         if (!((choice == 3) || (choice == 2) || (choice == 1))) {
             do {
@@ -250,7 +244,6 @@ public class St10166349_PROG5121_POE_Part2 {
                 System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
                 //==============Beginning of huge for loop=======================
                 for (int i = 0; i < lCounter; i++) {
-
 
                     System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
                     System.out.print("Task Name : ");
@@ -309,10 +302,12 @@ public class St10166349_PROG5121_POE_Part2 {
             System.out.println("User_Name captured:\n" + User_name); //when the user enters the right amount of letters it will say the name has be captured and shows the user name
             //this checks that has the user entered a underscore in the user
 
-
         } else if (User_name.length() >= 5 && User_name.contains("_"))//otherwise if the user names name length is more than 5 letters
+        {
             System.out.println("Username has no underscore .Could not Caputer User_name:");// then the console will print to the user could not be able to capture user name
-        else System.out.println("Sorry username could not be captured and has no underscore");
+        } else {
+            System.out.println("Sorry username could not be captured and has no underscore");
+        }
         {  //this checks that has the user entered a underscore in the user
 
             {//these are curly braces to keep if statements in their own code block
@@ -324,56 +319,56 @@ public class St10166349_PROG5121_POE_Part2 {
                 //characthers in the for loop are then checked by the loop is the uppercase is les then input len then it will be incremented by 1
                 for (int i = 0; i < InputUser_Len; i++) {
                     char ch_userchar = input.charAt(i); //this shows us that the user can input the characters one at a time
-                    if (Character.isUpperCase(ch_userchar))
+                    if (Character.isUpperCase(ch_userchar)) {
                         upperCount++;//the characters for the uppercase are increased by 1 if they are less then the input length
-                    else if (Character.isLowerCase(ch_userchar))
+                    } else if (Character.isLowerCase(ch_userchar)) {
                         lowerCount++;//if the  lower count is lower case it will be incremented by 1
-                    else if (Character.isDigit(ch_userchar))
+                    } else if (Character.isDigit(ch_userchar)) {
                         digitCount++;//if the digit count is  less than the input len then the digit will be  increased by 1
-                    else if (!Character.isLetterOrDigit(ch_userchar)) {
+                    } else if (!Character.isLetterOrDigit(ch_userchar)) {
                         Pasword_SpecialCharacterset++;
                     }
 
                 }
 
-
                 if (upperCount >= UsernamePassword_Uppecasel && lowerCount >= UsernamePassword_Lowercase && num_digits >= digitCount && Pasword_SpecialCharacterset >= 1)//the if statement operator will compare the upper case to the upper count, the lower case to lower count and digits to digit count iff the are greater or equls to\nthe assigned operator then
-
+                {
                     System.out.println("Password Successfully captured\nWelcome Great to See you: !!!\n" + Name + " " + Last_name);//we get system out print of password is valid and a welcome for the user
-
-                else {
+                } else {
                     System.out.println("\n Login Failed!!!\nThe password did not have the following:");//otherwise if the uppercase,lower case or digits are not equal to the assigned operands then
                     if (upperCount < UsernamePassword_Uppecasel)//
+                    {
                         System.out.println("UpperLetters");//you will be told the password has no 1 upper case character
-                    else if (lowerCount < UsernamePassword_Lowercase)
+                    } else if (lowerCount < UsernamePassword_Lowercase) {
                         System.out.println("LowerCase");// password has no 3 lower casse characters needed
-                    if (digitCount < num_digits)
+                    }
+                    if (digitCount < num_digits) {
                         System.out.println("Digits");// password has no 1 digit if there is more than 2 digits the passord will be wrong one digits is needed
-                    if (Pasword_SpecialCharacterset < UsernamePassword_SpecialCharacter_)
+                    }
+                    if (Pasword_SpecialCharacterset < UsernamePassword_SpecialCharacter_) {
                         System.out.println("Special character");//user is shown that they should enter a special character in the password
+                    }
                     System.out.print("1:upper case or 3:Lower case or digit:1");//requirements for the password to be valid 3 lowwer case and 1 number or digit needed
                     if (Users_password >= 8) {
                         System.out.println("Sorry Your Password should be between 1 and 8 characters long.\n Please try again");
 
-
                     }
-
 
                 }
             }
         }
         if (upperCount >= UsernamePassword_Uppecasel && lowerCount >= UsernamePassword_Lowercase && num_digits >= digitCount && Pasword_SpecialCharacterset >= 1)//the if statement operator will compare the upper case to the upper count, the lower case to lower count and digits to digit count iff the are greater or equls to\nthe assigned operator then
+        {
             System.out.println("---------------------------------------------------");
+        }
         System.out.println("Welcome to EasyKasnban");
 
         System.out.println("---------------------------------------------------");
-        {
 
-            {
-                int counter = 0;
+
+        int counter = 0;
                 Scanner counter2 = new Scanner(System.in);
                 St10166349_PROG5121_POE_Part2 obj = new St10166349_PROG5121_POE_Part2();
-
 
                 //The task ID will be generated upon runtime when the user selects option 1 => to ADD TASKS
                 do {
@@ -387,14 +382,13 @@ public class St10166349_PROG5121_POE_Part2 {
                         System.out.println("Coming Soon");
                     }
                 } while (obj.choice != 3);
-                if (obj.choice == 3) {
-                    System.out.println("Exiting program...");
-                    obj.terminate();
-                }
-
-            }
-
-
+        if (obj.choice == 3) {
+            System.out.println("Exiting program...");
+            obj.terminate();
         }
+
     }
+
 }
+
+
