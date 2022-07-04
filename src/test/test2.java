@@ -1,18 +1,38 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class test {
+public class test2 {
     //fields
-    int choice, choice2, taskNum, numOfTask, duration = 0;
-    ;
+    int choice;
+    int choice2;
+    static int choice3;
+    int taskNum;
+    int numOfTask = 0;
+    int duration = 0;
+    int autoTaskNumber = 0;
     String taskName, taskDescription, taskStatus, devFName, devLName, taskID;
     Scanner input = new Scanner(System.in);
     Scanner uInput = new Scanner(System.in);
+    //Arrays(used to copy)
+    String[] finalDevs;
+    String[] finalTNames;
+    String[] finalTID;
+    int[] finalTDuration;
+    String[] finalTStatus;
+
+    //ArrayLists
+    ArrayList<String> developers = new ArrayList<String>();
+    ArrayList<String> taskNames = new ArrayList<String>();
+    ArrayList<String> taskId = new ArrayList<String>();
+    ArrayList<Integer> taskDuration = new ArrayList<Integer>();
+    ArrayList<String> taskStat = new ArrayList<String>();
 
     //Construct
     //get the number of tasks to be added upon initial execution of the program
-    public test() {
+    public test2() {
         System.out.println("Hii");
     }
 
@@ -49,8 +69,21 @@ public class test {
         //int sum2 = 4*4;
     }
 
-    void autogenTaskNum(int genValue) {
-        taskNum = genValue;
+    void showMenu() {
+
+        System.out.println("===================================================");
+        System.out.println("=======================Menu========================");
+        System.out.println("===================================================");
+        System.out.println("[1] \t Display Done Tasks");
+        System.out.println("[2] \t Display Longest Task Duration");
+        System.out.println("[3] \t Search Task");
+        System.out.println("[4] \t Delete Task");
+        System.out.println("[5] \t Show Report");
+        System.out.println("===================================================");
+        System.out.print("Choose an option to continue : ");
+        choice3 = input.nextInt();
+        System.out.println("===================================================");
+
     }
 
     void duration() {
@@ -83,11 +116,8 @@ public class test {
         div2 = taskNum;
         div3 = devFName.substring(((devFName.length()) - 3));
         taskID = div1 + div2 + ":" + div3;
-
-        /*taskID = taskName.substring(0, 1).concat(":") + taskNum + ":" + (devFirstName.substring((devFirstName.length() - 3))); //
-        taskID = taskID.toUpperCase();*/
-        //Debuggin reasons i'll print out the id
-        System.out.println("[TaskID] : " + taskID.toUpperCase());
+        taskID = taskID.toUpperCase();
+        System.out.println("[TaskID] : " + taskID);
     }
 
     void taskStatus() {
@@ -97,8 +127,7 @@ public class test {
             do {
                 System.out.println("Invalid entry, please try again");
                 statusMenu();
-            }
-            while (!((choice2 == 1) || (choice2 == 2) || (choice2 == 3)));
+            } while (!((choice2 == 1) || (choice2 == 2) || (choice2 == 3)));
         }
         if (((choice2 == 1) || (choice2 == 2) || (choice2 == 3))) {
             if (choice2 == 1) {
@@ -128,7 +157,7 @@ public class test {
         }
     }
 
-    void taskDecription() {
+    void taskDescription() {
         System.out.print("Task Description : ");
         taskDescription = uInput.nextLine();
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -242,31 +271,48 @@ public class test {
         while (choice != 3);
     }
 */
-    void validate(int lCounter) {
+    public void validate(int lCounter) {
+        //Arrays
+        String[] Devs;
+        Devs = new String[lCounter];
+
+        String[] tNames;
+        tNames = new String[lCounter];
+
+        String[] tID;
+        tID = new String[lCounter];
+        int[] tDuration;
+        tDuration = new int[lCounter];
+
+        String[] tStatus;
+        tStatus = new String[lCounter];
+
+
         if (!((choice == 3) || (choice == 2) || (choice == 1))) {
             do {
                 System.out.println("Invalid input, Please try again:");
                 menu();
-            }
-            while (!((choice == 3) || (choice == 2) || (choice == 1)));
+            } while (!((choice == 3) || (choice == 2) || (choice == 1)));
         }
         if ((choice == 3) || (choice == 2) || (choice == 1)) {
             //================Beginning of huge if====================
             if (choice == 1) {
+
                 System.out.println("===================================================\n");
                 System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
                 //==============Beginning of huge for loop=======================
                 for (int i = 0; i < lCounter; i++) {
-                    //for(int y= 0;y>)
                     System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
                     System.out.print("Task Name : ");
                     taskName = input.next();
                     System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
-                    System.out.print("Task Number : ");
-                    taskNum = input.nextInt();
+                    taskNum = autoTaskNumber;
+                    //System.out.println("[Task Number] : "+autoTaskNumber); it works
                     System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++");
+                    // autogenTaskNum(numOfTask);
+                    // numOfTask++;
                     //Task Description
-                    taskDecription();
+                    taskDescription();
                     //Dev Details
                     devDetails();
                     //TaskID
@@ -277,42 +323,93 @@ public class test {
                     duration();
                     //Task Status
                     taskStatus();
+                    autoTaskNumber++;
+
+                    //populating arrays
+                    Devs[i] = devFName + " " + devLName;
+                    tNames[i] = taskName;
+                    tID[i] = taskID;
+                    tDuration[i] = duration;
+                    tStatus[i] = taskStatus;
+
+                    //populating the ArrayLists
+                    developers.add((devFName + " " + devLName));
+                    taskNames.add(taskName);
+                    taskId.add(taskID);
+                    taskDuration.add(duration);
+                    taskStat.add(taskStatus);
+
                 }
+
             }//====================End of huge if===================
+
         }//==================End of for loop
+        //Copying the arrays into another one that is available to manipulate
+        finalDevs = Arrays.copyOfRange(Devs, 0, lCounter);
+        System.out.println("Content of finalDevs : " + Arrays.toString(finalDevs));
+        finalTNames = Arrays.copyOfRange(tNames, 0, lCounter);
+        finalTID = Arrays.copyOfRange(tID, 0, lCounter);
+        finalTDuration = Arrays.copyOfRange(tDuration, 0, lCounter);
+        finalTStatus = Arrays.copyOfRange(tStatus, 0, lCounter);
+
+        System.out.println("The Arraylist of Devs : " + developers.toString());
+        System.out.println("The Arraylist of TaskStatus : " + taskStat.toString());
     }
+
 
     public static void main(String[] args) {
         int counter = 0;
         Scanner counter2 = new Scanner(System.in);
-        test obj = new test();
+        test2 obj = new test2();
+        //The task ID will be generated upon runtime when the user selects option 1 => to ADD TASKS
+        do {
+            obj.menu(); //Prints the menu
+            if (obj.choice == 1) {
+                System.out.print("How many tasks do you wish to add ? ");
+                counter = counter2.nextInt();
+                obj.validate(counter);
+
+            }
+            if (obj.choice == 2) {
+                obj.showMenu();
+                switch (choice3) {
+                    case 1://Display Dev->tName->tDuration if(Done==true)
+                        System.out.println("Printing Done Tasks");
+                        //finding the tasks that are Completed
+                        boolean tasksDone = obj.taskStat.contains("Done");
+                        if (tasksDone == false) {
+                            System.out.println("There aren't ant task that have been completed yet!! ");
+                        } else {
+                            int indexer = obj.taskStat.indexOf("Done");
+                            System.out.println("[+]====================================================");
+                            System.out.println("||");
+                            System.out.println("[-] \t Developer Name : " + obj.developers.get(indexer));
+                            System.out.println("[-] \t Task Name      : " + obj.taskNames.get(indexer));
+                            System.out.println("[-] \t Task Duration  : " + obj.taskDuration.get(indexer) + " hours");
+                            System.out.println("[-] \t Task Status    : " + obj.taskStat.get(indexer));
 
 
-        //The task ID will be geenerated apon runtime when the user selects option 1 => to ADD TASKS
-        for (int z = 0; z >= 0; ) {
-            do {
-                obj.menu(); //Prints the menu
-                if (obj.choice == 1) {
-                    System.out.print("How many tasks do you wish to add ? ");
-                    counter = counter2.nextInt();
-                    obj.validate(counter);
-                }
-                if (obj.choice == 2) {
-                    System.out.println("Coming Soon");
-                }
-                if (obj.choice == 3) {
-                    System.out.println("Closing program...");
-                    for (int i = 3; i > 0; i--) {
-                        System.out.print("..." + i + "\n\n\n\n");
-                        if (i == 1) {
-                            System.out.println("Bye...");
-                            obj.terminate();
                         }
-                    }
+
+
+                        break;
+                    case 2://Display Dev->Duration of the longestTask
+                        System.out.println("");
+                        break;
+                    case 3://Search for a task via -> TNumber and Display -> Dev->Tname->tStatus
+                        System.out.println("");
+                        break;
+                    case 4://Delete a task via -> TNumber(Deleting the whole entry i guess)
+                        System.out.println("");
+                        break;
+                    case 5://Compiling a report of all the details that have been captured
+                        System.out.println("");
                 }
             }
-            while (obj.choice != 3);
+        } while (obj.choice != 3);
+        if (obj.choice == 3) {
+            System.out.println("Exiting program...");
+            obj.terminate();
         }
-
     }
 }
